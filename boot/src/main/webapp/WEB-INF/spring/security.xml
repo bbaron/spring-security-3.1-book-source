@@ -27,7 +27,8 @@
         <openid-login login-page="/login/form"
                 login-processing-url="/login"
                 authentication-failure-url="/login/form?error"
-                default-target-url="/default"/>
+                default-target-url="/default"
+                user-service-ref="registeringOpenIDAuthenticationUserDetailsService"/>
         <logout logout-url="/logout"
                 logout-success-url="/login/form?logout"/>
     </http>
