@@ -30,6 +30,7 @@
                 password-parameter="password"
                 authentication-failure-url="/login/form?error"
                 default-target-url="/default"/>
+        <remember-me key="jbcpCalendar"/>
         <logout logout-url="/logout"
                 logout-success-url="/login/form?logout"/>
     </http>
