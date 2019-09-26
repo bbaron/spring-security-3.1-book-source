@@ -3,6 +3,14 @@ package com.packtpub.springsecurity.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.acls.domain.BasePermission;
+import org.springframework.security.acls.domain.ObjectIdentityImpl;
+import org.springframework.security.acls.domain.PrincipalSid;
+import org.springframework.security.acls.model.AclService;
+import org.springframework.security.acls.model.MutableAcl;
+import org.springframework.security.acls.model.MutableAclService;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.packtpub.springsecurity.dataaccess.CalendarUserDao;
 import com.packtpub.springsecurity.dataaccess.EventDao;
@@ -15,6 +23,7 @@ import com.packtpub.springsecurity.domain.Event;
  * @author Rob Winch
  *
  */
+@Repository
 public class DefaultCalendarService implements CalendarService {
     private final EventDao eventDao;
     private final CalendarUserDao userDao;
@@ -35,6 +44,7 @@ public class DefaultCalendarService implements CalendarService {
         return eventDao.getEvent(eventId);
     }
 
+    @Transactional
     public int createEvent(Event event) {
         return eventDao.createEvent(event);
     }

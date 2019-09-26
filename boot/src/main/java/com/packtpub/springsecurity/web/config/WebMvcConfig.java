@@ -84,7 +84,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
     @Override
     public RequestMappingHandlerMapping requestMappingHandlerMapping() {
         RequestMappingHandlerMapping result = super.requestMappingHandlerMapping();
-//        result.setUseSuffixPatternMatch(false);
+        result.setUseSuffixPatternMatch(false);
         result.setUseTrailingSlashMatch(false);
         return result;
     }
