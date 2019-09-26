@@ -100,7 +100,5 @@ public interface CalendarService {
      *
      * @return a non-null {@link List} of {@link Event}'s
      */
-    @PostFilter("principal.id == filterObject.owner.id or " +
-            "principal.id == filterObject.attendee.id")
     List<Event> getEvents();
 }

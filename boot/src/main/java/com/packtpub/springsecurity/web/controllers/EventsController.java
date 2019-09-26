@@ -25,9 +25,14 @@ import com.packtpub.springsecurity.web.model.CreateEventForm;
 
 @Controller
 @RequestMapping("/events")
-public final class EventsController implements Serializable {
+public class EventsController implements Serializable {
     private final CalendarService calendarService;
     private final UserContext userContext;
+
+    EventsController() {
+        calendarService = null;
+        userContext = null;
+    }
 
     @Autowired
     public EventsController(CalendarService calendarService, UserContext userContext) {
@@ -35,6 +40,7 @@ public final class EventsController implements Serializable {
         this.userContext = userContext;
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping("/")
     public ModelAndView events() {
         return new ModelAndView("events/list", "events", calendarService.getEvents());
