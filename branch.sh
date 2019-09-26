@@ -14,7 +14,7 @@
 #chapter12.02-calendar chapter12.03-calendar chapter13.00-calendar chapter13.01-calendar chapter13.02-calendar chapter13.03-calendar
 #chapter13.04-calendar chapter13.05-calendar chapter13.06-calendar chapter14.00-richfaces chapter14.01-eventsa'
 
-directories='chapter02.01-calendar chapter02.02-calendar'
+directories='chapter02.02-calendar chapter02.03-calendar'
 
 
 for b in $directories:
