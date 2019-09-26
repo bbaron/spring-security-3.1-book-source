@@ -3,7 +3,6 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <c:set var="pageTitle" value="All Events" scope="request"/>
 <jsp:include page="../includes/header.jsp"/>
@@ -27,16 +26,14 @@
             </tr>
         </c:if>
          <c:forEach items="${events}" var="event">
-            <sec:authorize access="hasPermission(#event,'read') or hasPermission(#event,'admin_read')">
-                <tr>
-                    <fmt:formatDate value="${event.when.time}" type="both" pattern="yyyy-MM-dd HH:mm" var="when"/>
-                    <td><c:out value="${when}"/></td>
-                    <td><c:out value="${event.owner.name}" /></td>
-                    <td><c:out value="${event.attendee.name}" /></td>
-                    <c:url var="eventUrl" value="${event.id}"/>
-                    <td><a href="${eventUrl}"><c:out value="${event.summary}" /></a></td>
-                </tr>
-            </sec:authorize>
+            <tr>
+                <fmt:formatDate value="${event.when.time}" type="both" pattern="yyyy-MM-dd HH:mm" var="when"/>
+                <td><c:out value="${when}"/></td>
+                <td><c:out value="${event.owner.name}" /></td>
+                <td><c:out value="${event.attendee.name}" /></td>
+                <c:url var="eventUrl" value="${event.id}"/>
+                <td><a href="${eventUrl}"><c:out value="${event.summary}" /></a></td>
+            </tr>
         </c:forEach>
     </tbody>
 </table>

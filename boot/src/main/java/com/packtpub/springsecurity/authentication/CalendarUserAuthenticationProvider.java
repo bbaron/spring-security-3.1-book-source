@@ -11,6 +11,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
 
 import com.packtpub.springsecurity.core.authority.CalendarUserAuthorityUtils;
 import com.packtpub.springsecurity.core.userdetails.CalendarUserDetailsService;
@@ -24,6 +25,7 @@ import com.packtpub.springsecurity.service.CalendarService;
  * @author Rob Winch
  * @see CalendarUserDetailsService
  */
+@Component
 public class CalendarUserAuthenticationProvider implements AuthenticationProvider {
     private final CalendarService calendarService;
 

@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.packtpub.springsecurity</groupId>
-  <artifactId>chapter11.05-calendar</artifactId>
+  <artifactId>chapter12.00-calendar</artifactId>
   <version>1.0</version>
   <packaging>war</packaging>
   <licenses>
@@ -103,12 +103,6 @@
       <scope>runtime</scope>
     </dependency>
     <dependency>
-      <groupId>net.sf.ehcache</groupId>
-      <artifactId>ehcache</artifactId>
-      <version>1.6.2</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
       <groupId>org.codehaus.jackson</groupId>
       <artifactId>jackson-core-asl</artifactId>
       <version>1.9.4</version>
@@ -140,32 +134,26 @@
     </dependency>
     <dependency>
       <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-acl</artifactId>
-      <version>3.1.0.RELEASE</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-config</artifactId>
-      <version>3.1.0.RELEASE</version>
+      <version>3.1.2.RELEASE</version>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-core</artifactId>
-      <version>3.1.0.RELEASE</version>
+      <version>3.1.2.RELEASE</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-taglibs</artifactId>
-      <version>3.1.0.RELEASE</version>
+      <version>3.1.2.RELEASE</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-web</artifactId>
-      <version>3.1.0.RELEASE</version>
+      <version>3.1.2.RELEASE</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
