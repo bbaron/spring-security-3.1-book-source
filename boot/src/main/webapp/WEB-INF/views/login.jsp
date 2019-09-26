@@ -32,7 +32,7 @@
     <p>
         <label for="remember">Remember Me?</label>
         <input type="checkbox" id="remember"
-                name="_spring_security_remember_me"
+                name="rememberme"
                 value="true"/>
     </p>
     <p>
