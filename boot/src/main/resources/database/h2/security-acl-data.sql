@@ -21,5 +21,6 @@ values (32,102, 10, null, 21, false);
 
 -- ACE list
 -- mask == R
-insert into acl_entry (acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure)
-values(30, 1, 20, 1, true, true, true);
+insert into acl_entry
+    (acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure)
+    values(30, 1, 20, 3, true, true, true);
