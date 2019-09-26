@@ -36,7 +36,7 @@
         <ldap-authentication-provider server-ref="ldapServer"
                 user-search-filter="(uid={0})"
                 group-search-base="ou=Groups">
-            <password-compare/>
+            <password-compare hash="{ssha}"/>
         </ldap-authentication-provider>
     </authentication-manager>
 </bean:beans>
