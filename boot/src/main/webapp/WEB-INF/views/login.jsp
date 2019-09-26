@@ -22,10 +22,18 @@
         </div>
     </c:if>
     <input type="hidden" name="action" value="verify" />
-    <label for="openid_identifer">OpenID</label>
-    <input id="openid_identifier" name="openid_identifier" type="text"/>
-    <div class="form-actions">
-        <input class="btn" name="submit" type="submit" value="Login"/>
+    <div id="openid_choice">
+        <p>Please click your account provider:</p>
+        <div id="openid_btns"></div>
+    </div>
+    <div id="openid_input_area">
+        <input id="openid_identifier" name="openid_identifier" type="text" value="http://" />
+        <input id="openid_submit" type="submit" value="Sign-In"/>
     </div>
 </form>
+<script type="text/javascript">
+    $(document).ready(function() {
+        openid.init('openid_identifier');
+    });
+</script>
 <jsp:include page="./includes/footer.jsp"/>
