@@ -33,8 +33,10 @@
         <logout logout-url="/logout"
                 logout-success-url="/login/form?logout"/>
 
-        <session-management
-                session-fixation-protection="none"/>
+        <session-management>
+            <concurrency-control
+                    max-sessions="1"/>
+        </session-management>
     </http>
     <authentication-manager>
         <authentication-provider>
