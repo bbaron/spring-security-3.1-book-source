@@ -3,6 +3,7 @@ package com.packtpub.springsecurity.service;
 import java.util.List;
 
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PostFilter;
 
 import com.packtpub.springsecurity.domain.CalendarUser;
@@ -64,6 +65,7 @@ public interface CalendarService {
      * @throws RuntimeException
      *             if the {@link Event} cannot be found.
      */
+    @PostAuthorize("hasPermission(returnObject, 'read')")
     Event getEvent(int eventId);
 
     /**
@@ -92,5 +94,6 @@ public interface CalendarService {
      *
      * @return a non-null {@link List} of {@link Event}'s
      */
+    @PostFilter("hasPermission(filterObject, 'read')")
     List<Event> getEvents();
 }
