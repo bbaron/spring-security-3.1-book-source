@@ -6,7 +6,7 @@
         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
     <http pattern="/resources/**" security="none"/>
-    <http auto-config="true" use-expressions="true">
+    <http auto-config="true" use-expressions="true" entry-point-ref="forbiddenAuthEntryPoint">
         <intercept-url pattern="/"
                 access="permitAll"/>
         <intercept-url pattern="/login/*"
@@ -22,7 +22,9 @@
         <intercept-url pattern="/**"
                 access="hasRole('ROLE_USER')"/>
         <access-denied-handler error-page="/errors/403"/>
+
         <x509 user-service-ref="userDetailsService"/>
+
         <form-login login-page="/login/form"
                 login-processing-url="/login"
                 username-parameter="username"
@@ -32,6 +34,10 @@
         <logout logout-url="/logout"
                 logout-success-url="/login/form?logout"/>
     </http>
+
+    <bean:bean id="forbiddenAuthEntryPoint"
+            class="org.springframework.security.web.authentication.Http403ForbiddenEntryPoint"/>
+
     <authentication-manager>
         <authentication-provider>
             <user-service id="userDetailsService">

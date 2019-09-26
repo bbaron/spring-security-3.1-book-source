@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.packtpub.springsecurity</groupId>
-  <artifactId>chapter07.01-calendar</artifactId>
+  <artifactId>chapter07.02-calendar</artifactId>
   <version>1.0</version>
   <packaging>war</packaging>
   <licenses>
