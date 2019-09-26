@@ -18,17 +18,19 @@
 	    <li><a id="createEventLink" href="events/form">Create Event</a> - Allows creating an Event with the current user.</li>
     </c:if>
     <li><a id="logoutLink" href="j_spring_security_logout">Logout</a> - we haven't discussed it yet, but you can logout using j_spring_security_logout. Later in in this chapter we will discuss how to customize logout and provide a logout link.</li>
-    <li>
-        <a id="h2Link" href="admin/h2/">H2 Database Console</a> - Allows you to interact with the database using a web console. To use it:
-        <ul>
-            <li>Click the link above.</li>
-            <li>Ensure that Generic H2 (Embedded) is selected</li>
-            <li>Ensure that org.h2.Driver is the Driver Class</li>
-            <li>Enter <strong>jdbc:h2:mem:dataSource</strong> as the JDBC URL</li>
-            <li>Ensure that the username is sa</li>
-            <li>Ensure the password is left empty</li>
-            <li>Click Connect</li>
-        </ul>
-    </li>
+    <c:if test="${showAdminLink}">
+	    <li>
+	        <a id="h2Link" href="admin/h2/">H2 Database Console</a> - Allows you to interact with the database using a web console. To use it:
+	        <ul>
+	            <li>Click the link above.</li>
+	            <li>Ensure that Generic H2 (Embedded) is selected</li>
+	            <li>Ensure that org.h2.Driver is the Driver Class</li>
+	            <li>Enter <strong>jdbc:h2:mem:dataSource</strong> as the JDBC URL</li>
+	            <li>Ensure that the username is sa</li>
+	            <li>Ensure the password is left empty</li>
+	            <li>Click Connect</li>
+	        </ul>
+	    </li>
+    </c:if>
 </ul>
 <jsp:include page="./includes/footer.jsp"/>
