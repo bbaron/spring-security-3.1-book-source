@@ -29,12 +29,31 @@
                 authentication-failure-url="/login/form?error"
                 default-target-url="/default"
                 user-service-ref="registeringOpenIDAuthenticationUserDetailsService">
-            <attribute-exchange>
+            <attribute-exchange identifier-match=".*myopenid.com.*">
                 <openid-attribute name="email"
                         type="http://schema.openid.net/contact/email"
                         required="true"/>
                 <openid-attribute name="fullname"
                         type="http://schema.openid.net/namePerson"
+                        required="true"/>
+            </attribute-exchange>
+            <attribute-exchange identifier-match="https://www.google.com/.*">
+                <openid-attribute name="email"
+                        type="http://axschema.org/contact/email"
+                        required="true" count="1"/>
+                <openid-attribute name="firstname"
+                        type="http://axschema.org/namePerson/first"
+                        required="true" />
+                <openid-attribute name="lastname"
+                        type="http://axschema.org/namePerson/last"
+                        required="true" />
+            </attribute-exchange>
+            <attribute-exchange identifier-match=".*yahoo.com.*">
+                <openid-attribute name="email"
+                        type="http://axschema.org/contact/email"
+                        required="true"/>
+                <openid-attribute name="fullname"
+                        type="http://axschema.org/namePerson"
                         required="true" />
             </attribute-exchange>
         </openid-login>
