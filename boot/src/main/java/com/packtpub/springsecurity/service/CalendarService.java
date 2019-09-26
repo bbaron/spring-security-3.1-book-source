@@ -94,6 +94,6 @@ public interface CalendarService {
      *
      * @return a non-null {@link List} of {@link Event}'s
      */
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @RolesAllowed("ROLE_ADMIN")
     List<Event> getEvents();
 }
