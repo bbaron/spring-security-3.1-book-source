@@ -14,7 +14,9 @@
     <li><a id="myEventsUser0Link" href="events/my?userId=0">My Events (userId=0)</a> - shows all events that are associated to user1@example.com.</li>
     <li><a id="myEventsUser1Link" href="events/my?userId=1">My Events (userId=1)</a> - shows all events that are associated to admin1@exmple.com.</li>
     <li><a id="myEventsUser1Link" href="events/102">Lunch Event</a></li>
-    <li><a id="createEventLink" href="events/form">Create Event</a> - will allow creating a new Event with rob@example.com as the owner. We will discuss in Chapter 3 how to make the current user the owner.</li>
+    <c:if test="${showCreateLink}">
+	    <li><a id="createEventLink" href="events/form">Create Event</a> - Allows creating an Event with the current user.</li>
+    </c:if>
     <li><a id="logoutLink" href="j_spring_security_logout">Logout</a> - we haven't discussed it yet, but you can logout using j_spring_security_logout. Later in in this chapter we will discuss how to customize logout and provide a logout link.</li>
     <li>
         <a id="h2Link" href="admin/h2/">H2 Database Console</a> - Allows you to interact with the database using a web console. To use it:
