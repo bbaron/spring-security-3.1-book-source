@@ -31,16 +31,10 @@
         <logout logout-url="/logout"
                 logout-success-url="/login/form?logout"/>
     </http>
+    <ldap-server id="ldapServer" ldif="classpath:/ldif/calendar.ldif" root="dc=jbcpcalendar,dc=com"/>
     <authentication-manager>
-        <authentication-provider>
-            <user-service>
-                <user name="user1@example.com"
-                        password="user1"
-                        authorities="ROLE_USER"/>
-                <user name="admin1@example.com"
-                        password="admin1"
-                        authorities="ROLE_USER,ROLE_ADMIN"/>
-            </user-service>
-        </authentication-provider>
+        <ldap-authentication-provider server-ref="ldapServer"
+                user-search-filter="(uid={0})"
+                group-search-base="ou=Groups"/>
     </authentication-manager>
 </bean:beans>
