@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
+import com.packtpub.springsecurity.authentication.CalendarUserAuthenticationProvider;
 import com.packtpub.springsecurity.core.authority.CalendarUserAuthorityUtils;
 import com.packtpub.springsecurity.dataaccess.CalendarUserDao;
 import com.packtpub.springsecurity.domain.CalendarUser;
@@ -18,7 +19,7 @@ import com.packtpub.springsecurity.domain.CalendarUser;
  * converting it into a {@link UserDetails} so that Spring Security can do the username/password comparison for us.
  *
  * @author Rob Winch
- *
+ * @see CalendarUserAuthenticationProvider
  */
 @Component
 public class CalendarUserDetailsService implements UserDetailsService {
