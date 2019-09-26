@@ -11,6 +11,7 @@
     <li>This chapter starts off with some additional functionality to get us ready to support custom authentication and logging in after signing up. At this point we have not implemented signup so it will not work</li>
     <li>We add the ability to use the current user when creating events and viewing my events. Login with admin1@example.com / admin1 and see that the proper events are now displayed. Create an event and see that the owner is assigned to the proper user.</li>
     <li>We have added the ability to signup for a new account. The user will be automatically loged in after creating the account. Go ahead and try to create a new account.</li>
+    <li>There are no changes from a users perspective. However, we have created a custom UserDetailService which means we no longer need to maintain two different representations of a user.</li>
     <li><a id="eventsLink" href="events/">All Events</a> - shows all events for all users, but only allows administrators to access the page.</li>
     <li><a id="myEventsLink" href="events/my">My Events</a> - shows all events that user1@example.com is the owner or attendee. We will discuss in Chapter 3 how to obtain the current user's events.</li>
     <li><a id="createEventLink" href="events/form">Create Event</a> - will allow creating a new Event with user1@example.com as the owner. We will discuss in Chapter 3 how to make the current user the owner.</li>
