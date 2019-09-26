@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.packtpub.springsecurity</groupId>
-  <artifactId>chapter04.05-calendar</artifactId>
+  <artifactId>chapter05.00-calendar</artifactId>
   <version>1.0</version>
   <packaging>war</packaging>
   <licenses>
@@ -14,6 +14,12 @@
     </license>
   </licenses>
   <build>
+    <resources>
+      <resource>
+        <filtering>true</filtering>
+        <directory>${basedir}/src/main/resources</directory>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -35,6 +41,12 @@
           </container>
           <configuration>
             <home>${project.build.directory}/tomcat7x/container</home>
+            <configfiles>
+              <configfile>
+                <file>${project.build.directory}/classes/tomcat/server.xml</file>
+                <todir>conf</todir>
+              </configfile>
+            </configfiles>
             <deployables>
               <deployable>
                 <properties>
@@ -91,6 +103,24 @@
       <scope>runtime</scope>
     </dependency>
     <dependency>
+      <groupId>org.apache.directory.server</groupId>
+      <artifactId>apacheds-core</artifactId>
+      <version>1.5.5</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.directory.server</groupId>
+      <artifactId>apacheds-protocol-ldap</artifactId>
+      <version>1.5.5</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.directory.shared</groupId>
+      <artifactId>shared-ldap</artifactId>
+      <version>0.9.15</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
       <groupId>org.codehaus.jackson</groupId>
       <artifactId>jackson-core-asl</artifactId>
       <version>1.9.4</version>
@@ -129,6 +159,12 @@
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-core</artifactId>
+      <version>3.1.0.RELEASE</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-ldap</artifactId>
       <version>3.1.0.RELEASE</version>
       <scope>compile</scope>
     </dependency>

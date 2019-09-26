@@ -11,8 +11,6 @@
                 access="permitAll"/>
         <intercept-url pattern="/login/*"
                 access="permitAll"/>
-        <intercept-url pattern="/signup/*"
-                access="permitAll"/>
         <intercept-url pattern="/logout"
                 access="permitAll"/>
         <intercept-url pattern="/errors/**"
@@ -35,14 +33,14 @@
     </http>
     <authentication-manager>
         <authentication-provider>
-            <jdbc-user-service id="userDetailsService"
-                data-source-ref="dataSource"
-                users-by-username-query="select email,password,true from calendar_users where email = ?"
-                authorities-by-username-query="select cua.id, cua.authority from calendar_users cu, calendar_user_authorities cua where cu.email = ? and  cu.id = cua.calendar_user"/>
-            <password-encoder ref="passwordEncoder"/>
+            <user-service>
+                <user name="user1@example.com"
+                        password="user1"
+                        authorities="ROLE_USER"/>
+                <user name="admin1@example.com"
+                        password="admin1"
+                        authorities="ROLE_USER,ROLE_ADMIN"/>
+            </user-service>
         </authentication-provider>
     </authentication-manager>
-
-    <bean:bean id="passwordEncoder" xmlns="http://www.springframework.org/schema/beans"
-            class="org.springframework.security.crypto.password.StandardPasswordEncoder"/>
 </bean:beans>

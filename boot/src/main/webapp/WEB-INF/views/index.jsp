@@ -6,12 +6,12 @@
 <c:set var="pageTitle" value="Welcome to myCalendar!" scope="request"/>
 <jsp:include page="./includes/header.jsp"/>
 <p>Below you can find some highlights about myCalendar. Each sample will have a slightly different summary depending on what has been done.</p>
-<h2>Chapter 4</h2>
+<h2>Chapter 5 - LDAP</h2>
 <ul>
     <li><a id="eventsLink" href="events/">All Events</a> - shows all events for all users, but only allows administrators to access the page.</li>
-    <li><a id="myEventsLink" href="events/my">My Events</a> - shows all events that user1@example.com is the owner or attendee. We will discuss in Chapter 3 how to obtain the current user's events.</li>
-    <li><a id="createEventLink" href="events/form">Create Event</a> - will allow creating a new Event with user1@example.com as the owner. We will discuss in Chapter 3 how to make the current user the owner.</li>
-    <li><a id="logoutLink" href="j_spring_security_logout">Logout</a> - we haven't discussed it yet, but you can logout using j_spring_security_logout. Later in in this chapter we will discuss how to customize logout and provide a logout link.</li>
+    <li><a id="myEventsLink" href="events/my">My Events</a> - shows all events that the current user is owner or attendee.</li>
+    <li><a id="createEventLink" href="events/form">Create Event</a> - will allow creating a new Event with current user as the owner.</li>
+    <li><a id="logoutLink" href="logout">Logout</a> - allows the user to logout</li>
     <li>
         <a id="h2Link" href="admin/h2/">H2 Database Console</a> - Allows you to interact with the database using a web console. To use it:
         <ul>
