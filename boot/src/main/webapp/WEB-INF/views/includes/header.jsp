@@ -39,9 +39,9 @@
                 </div>
                 <div id="nav-account" class="nav-collapse pull-right">
                     <ul class="nav">
-                            <sec:authorize access="authenticated" var="authenticated"/>
-                            <c:choose>
-                                <c:when test="${authenticated}">
+                        <sec:authorize access="authenticated" var="authenticated"/>
+                        <c:choose>
+                            <c:when test="${authenticated}">
                                 <c:url var="accountUrl" value="/accounts/my"/>
                                 <li id="greeting">
                                 	<div>

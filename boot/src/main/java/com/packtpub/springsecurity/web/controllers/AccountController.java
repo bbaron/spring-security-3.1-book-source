@@ -20,13 +20,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class AccountController {
 
+    private final UserDetailsService userDetailsService;
+
+    @Autowired
+    public AccountController(UserDetailsService userDetailsService) {
+        if (userDetailsService == null) {
+            throw new IllegalArgumentException("userDetailsService cannot be null");
+        }
+        this.userDetailsService = userDetailsService;
+    }
+
     @RequestMapping("/accounts/my")
     public String view(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if(authentication == null) {
             throw new IllegalStateException("authentication cannot be null. Make sure you are logged in.");
         }
-        Object principal = authentication.getPrincipal();
+        Object principal = userDetailsService.loadUserByUsername(authentication.getName());
         model.addAttribute("user", principal);
         model.addAttribute("isLdapUserDetails", principal instanceof LdapUserDetails);
         model.addAttribute("isLdapPerson", principal instanceof Person);

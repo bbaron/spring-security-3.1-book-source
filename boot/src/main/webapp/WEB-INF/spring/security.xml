@@ -32,14 +32,15 @@
                 logout-success-url="/login/form?logout"/>
     </http>
     <ldap-server id="ldapServer" ldif="classpath:/ldif/calendar.ldif" root="dc=jbcpcalendar,dc=com"/>
+    <ldap-user-service id="ldapUserService"
+            server-ref="ldapServer"
+            user-search-filter="(uid={0})"
+            group-search-base="ou=Groups"
+            user-details-class="inetOrgPerson"/>
     <authentication-manager>
         <ldap-authentication-provider server-ref="ldapServer"
                 user-search-filter="(uid={0})"
                 group-search-base="ou=Groups"
-                user-details-class="inetOrgPerson">
-                <password-compare
-                        hash="plaintext"
-                        password-attribute="telephoneNumber"/>
-        </ldap-authentication-provider>
+                user-details-class="inetOrgPerson"/>
     </authentication-manager>
 </bean:beans>
