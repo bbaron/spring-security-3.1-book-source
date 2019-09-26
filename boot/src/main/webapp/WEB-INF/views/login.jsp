@@ -21,16 +21,22 @@
             You have been logged out.
         </div>
     </c:if>
-    <label for="username">Username</label>
-    <input type="text" id="username" name="username"/>
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password"/>
-    <label for="remember">Remember Me?</label>
-    <input type="checkbox" id="remember"
+    <p>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username"/>
+    </p>
+    <p>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password"/>
+    </p>
+    <p>
+        <label for="remember">Remember Me?</label>
+        <input type="checkbox" id="remember"
                 name="_spring_security_remember_me"
                 value="true"/>
-    <div class="form-actions">
-        <input id="submit" class="btn" name="submit" type="submit" value="Login"/>
-    </div>
+    </p>
+    <p>
+        <input id="submit" name="submit" type="submit" value="Login"/>
+    </p>
 </form>
 <jsp:include page="./includes/footer.jsp"/>
