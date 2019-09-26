@@ -93,6 +93,7 @@ public interface CalendarService {
      *
      * @return a non-null {@link List} of {@link Event}'s
      */
-    @PostFilter("hasPermission(filterObject, 'read')")
+    @PostFilter("hasPermission(filterObject, 'read') "+
+        "or hasPermission(filterObject, 'admin_read')")
     List<Event> getEvents();
 }

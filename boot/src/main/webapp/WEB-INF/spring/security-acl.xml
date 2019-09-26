@@ -14,6 +14,7 @@
     </bean>
     <bean id="permissionEvaluator" class="org.springframework.security.acls.AclPermissionEvaluator">
         <constructor-arg ref="aclService"/>
+        <property name="permissionFactory" ref="permissionFactory"/>
     </bean>
 
     <bean id="aclService" class="org.springframework.security.acls.jdbc.JdbcMutableAclService">
@@ -28,6 +29,7 @@
         <constructor-arg ref="aclCache" />
         <constructor-arg ref="aclAuthzStrategy"/>
         <constructor-arg ref="consoleAuditLogger"/>
+        <property name="permissionFactory" ref="permissionFactory"/>
     </bean>
     <bean id="consoleAuditLogger"
             class="org.springframework.security.acls.domain.ConsoleAuditLogger" />
