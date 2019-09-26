@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 import com.packtpub.springsecurity.web.access.intercept.FilterInvocationServiceSecurityMetadataSource;
 
-//@Component
+@Component
 public class FilterInvocationServiceSecurityMetadataSourceBeanPostProcessor implements BeanPostProcessor {
     @Autowired
     private FilterInvocationServiceSecurityMetadataSource metadataSource;
