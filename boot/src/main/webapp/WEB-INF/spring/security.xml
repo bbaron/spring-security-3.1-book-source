@@ -32,19 +32,13 @@
                 logout-success-url="/login/form?logout"/>
     </http>
     <ldap-server ldif="classpath:/ldif/calendar.ldif" root="dc=jbcpcalendar,dc=com"/>
-    <ldap-server id="ldapServer"
-            url="ldap://localhost:33389/dc=jbcpcalendar,dc=com"
-            manager-dn="uid=admin,ou=system"
-            manager-password="secret"/>
+
     <ldap-user-service id="ldapUserService"
             server-ref="ldapServer"
             user-search-filter="(uid={0})"
             group-search-base="ou=Groups"
             user-details-class="inetOrgPerson"/>
     <authentication-manager>
-        <ldap-authentication-provider server-ref="ldapServer"
-                user-search-filter="(uid={0})"
-                group-search-base="ou=Groups"
-                user-details-class="inetOrgPerson"/>
+        <authentication-provider ref="ldapAuthenticationProvider"/>
     </authentication-manager>
 </bean:beans>
