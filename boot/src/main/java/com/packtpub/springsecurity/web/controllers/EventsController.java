@@ -1,16 +1,19 @@
 package com.packtpub.springsecurity.web.controllers;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -22,7 +25,7 @@ import com.packtpub.springsecurity.web.model.CreateEventForm;
 
 @Controller
 @RequestMapping("/events")
-public class EventsController {
+public final class EventsController implements Serializable {
     private final CalendarService calendarService;
     private final UserContext userContext;
 
@@ -37,12 +40,29 @@ public class EventsController {
         return new ModelAndView("events/list", "events", calendarService.getEvents());
     }
 
+    /**
+     * We add this method for demonstrating incorporating method parameters with Spring Security's @PreAuthorize based
+     * security.
+     *
+     * @param user
+     * @return
+     */
+    @RequestMapping(value= "/my", params="userId")
+    public ModelAndView userEvents(@RequestParam int userId) {
+        CalendarUser user = calendarService.getUser(userId);
+        return myEvents(user);
+    }
+
     @RequestMapping("/my")
     public ModelAndView myEvents() {
         CalendarUser currentUser = userContext.getCurrentUser();
-        Integer currentUserId = currentUser.getId();
-        ModelAndView result = new ModelAndView("events/my", "events", calendarService.findForUser(currentUserId));
-        result.addObject("currentUser", currentUser);
+        return myEvents(currentUser);
+    }
+
+    private ModelAndView myEvents(CalendarUser user) {
+        Integer userId = user.getId();
+        ModelAndView result = new ModelAndView("events/my", "events", calendarService.findForUser(userId));
+        result.addObject("currentUser", user);
         return result;
     }
 
@@ -104,4 +124,6 @@ public class EventsController {
         redirectAttributes.addFlashAttribute("message", "Successfully added the new event");
         return "redirect:/events/my";
     }
+
+    private static final long serialVersionUID = -7792962137618729714L;
 }

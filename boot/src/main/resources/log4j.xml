@@ -9,10 +9,6 @@
         </layout>
     </appender>
 
-
-    <logger name="org.jasig" additivity="true">
-        <level value="DEBUG" />
-    </logger>
     <category name="org.springframework.security">
         <priority value="DEBUG" />
     </category>

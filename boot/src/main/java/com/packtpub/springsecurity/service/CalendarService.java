@@ -2,10 +2,12 @@ package com.packtpub.springsecurity.service;
 
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
 import org.springframework.dao.EmptyResultDataAccessException;
-
-import com.packtpub.springsecurity.domain.Event;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import com.packtpub.springsecurity.domain.CalendarUser;
+import com.packtpub.springsecurity.domain.Event;
 
 public interface CalendarService {
 
