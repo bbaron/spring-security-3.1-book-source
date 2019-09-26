@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcOperations;
+import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import com.packtpub.springsecurity.dataaccess.CalendarUserDao;
@@ -22,9 +23,10 @@ public class DefaultCalendarService implements CalendarService {
     private final EventDao eventDao;
     private final CalendarUserDao userDao;
     private final JdbcOperations jdbcOperations;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public DefaultCalendarService(EventDao eventDao, CalendarUserDao userDao, JdbcOperations jdbcOperations) {
+    public DefaultCalendarService(EventDao eventDao, CalendarUserDao userDao, JdbcOperations jdbcOperations, PasswordEncoder passwordEncoder) {
         if (eventDao == null) {
             throw new IllegalArgumentException("eventDao cannot be null");
         }
@@ -34,9 +36,13 @@ public class DefaultCalendarService implements CalendarService {
         if (jdbcOperations == null) {
             throw new IllegalArgumentException("jdbcOperations cannot be null");
         }
+        if (passwordEncoder == null) {
+            throw new IllegalArgumentException("passwordEncoder cannot be null");
+        }
         this.eventDao = eventDao;
         this.userDao = userDao;
         this.jdbcOperations = jdbcOperations;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public Event getEvent(int eventId) {
@@ -68,6 +74,8 @@ public class DefaultCalendarService implements CalendarService {
     }
 
     public int createUser(CalendarUser user) {
+        String encodedPassword = passwordEncoder.encodePassword(user.getPassword(), null);
+        user.setPassword(encodedPassword);
         int userId = userDao.createUser(user);
         jdbcOperations.update("insert into calendar_user_authorities(calendar_user,authority) values (?,?)", userId,
                 "ROLE_USER");
