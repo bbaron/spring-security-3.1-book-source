@@ -31,9 +31,11 @@
         <constructor-arg ref="ldapServer"/>
     </bean>
 
-    <bean class="org.springframework.security.ldap.authentication.UserDetailsServiceLdapAuthoritiesPopulator"
-            id="ldapAuthoritiesPopulator">
-        <constructor-arg ref="userDetailsService"/>
+    <bean id="ldapAuthoritiesPopulator"
+            class="org.springframework.security.ldap.userdetails.DefaultLdapAuthoritiesPopulator">
+        <constructor-arg ref="ldapServer"/>
+        <constructor-arg value="ou=Groups"/>
+        <property name="groupSearchFilter" value="(uniqueMember={0})"/>
     </bean>
 
     <bean id="ldapUserDetailsContextMapper"
