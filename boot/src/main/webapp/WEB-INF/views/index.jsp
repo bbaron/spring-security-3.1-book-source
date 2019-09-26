@@ -6,13 +6,9 @@
 <c:set var="pageTitle" value="Welcome to myCalendar!" scope="request"/>
 <jsp:include page="./includes/header.jsp"/>
 <p>Below you can find some highlights about myCalendar. Each sample will have a slightly different summary depending on what has been done.</p>
-<h2>Expression based authorization</h2>
+<h2>Tag libs</h2>
 <ul>
-    <li>The functionality hasn't changed since the last checkpoint, but feel free to give it a try.</li>
-    <li>Select a link that requires authentication and observe the new login page.</li>
-    <li>Try typing an invalid username/password and viewing the error message</li>
-    <li>Try logging in as an admin and viewing all events. Notice we are able to view all the events</li>
-    <li>Try logging in as a regular user and viewing all events (notice we get an access denied)</li>
+    <li>Notice that the current username and a logout link are displayed only when logged in.</li>
     <li><a id="eventsLink" href="events/">All Events</a> - shows all events for all users, but only allows administrators to access the page.</li>
     <li><a id="myEventsLink" href="events/my">My Events</a> - shows all events that user1@example.com is the owner or attendee. We will discuss in Chapter 3 how to obtain the current user's events.</li>
     <li><a id="createEventLink" href="events/form">Create Event</a> - will allow creating a new Event with user1@example.com as the owner. We will discuss in Chapter 3 how to make the current user the owner.</li>

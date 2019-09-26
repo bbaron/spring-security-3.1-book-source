@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.packtpub.springsecurity</groupId>
-  <artifactId>chapter02.05-calendar</artifactId>
+  <artifactId>chapter02.06-calendar</artifactId>
   <version>1.0</version>
   <packaging>war</packaging>
   <licenses>
@@ -141,6 +141,12 @@
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-core</artifactId>
+      <version>3.1.0.RELEASE</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-taglibs</artifactId>
       <version>3.1.0.RELEASE</version>
       <scope>compile</scope>
     </dependency>
