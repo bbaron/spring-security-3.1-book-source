@@ -20,8 +20,7 @@
                 access="permitAll"/>
         <intercept-url pattern="/errors/**"
                 access="permitAll"/>
-        <intercept-url pattern="/events/"
-                access="hasRole('ROLE_ADMIN')"/>
+
         <intercept-url pattern="/admin/**"
                 access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/**"
