@@ -3,8 +3,10 @@ package com.packtpub.springsecurity.service;
 import java.util.List;
 
 import javax.annotation.security.RolesAllowed;
+
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PostFilter;
 import org.springframework.security.access.prepost.PreAuthorize;
 
 import com.packtpub.springsecurity.domain.CalendarUser;
@@ -87,6 +89,7 @@ public interface CalendarService {
      * @return a non-null {@link List} of {@link Event}'s intended for the specified {@link CalendarUser}. If the
      *         {@link CalendarUser} does not exist an empty List will be returned.
      */
+    @PreAuthorize("hasRole('ROLE_ADMIN') or principal.id == #userId")
     List<Event> findForUser(int userId);
 
     /**
@@ -94,6 +97,5 @@ public interface CalendarService {
      *
      * @return a non-null {@link List} of {@link Event}'s
      */
-    @RolesAllowed("ROLE_ADMIN")
     List<Event> getEvents();
 }
