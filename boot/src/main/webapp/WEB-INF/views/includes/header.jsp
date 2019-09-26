@@ -28,9 +28,13 @@
                     <ul class="nav">
                         <li><a id="navWelcomeLink" href="${welcomeUrl}">Welcome</a></li>
                         <c:url var="eventsUrl" value="/events/" />
-                        <li><a id="navEventsLink" href="${eventsUrl}">All Events</a></li>
-                        <c:url var="myEventsUrl" value="/events/my" />
-                        <li><a id="navMyEventsLink" href="${myEventsUrl}">My Events</a></li>
+                        <sec:authorize url="${eventsUrl}">
+                            <li><a id="navEventsLink" href="${eventsUrl}">All Events</a></li>
+                        </sec:authorize>
+                        <sec:authorize access="authenticated">
+                            <c:url var="myEventsUrl" value="/events/my" />
+                            <li><a id="navMyEventsLink" href="${myEventsUrl}">My Events</a></li>
+                        </sec:authorize>
                         <c:url var="createEventUrl" value="/events/form" />
                         <li><a id="navCreateEventLink" href="${createEventUrl}">Create Event</a></li>
                         <c:url var="h2ConsoleUrl" value="/admin/h2" />

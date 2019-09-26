@@ -6,6 +6,7 @@ import javax.annotation.security.RolesAllowed;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
+
 import com.packtpub.springsecurity.domain.CalendarUser;
 import com.packtpub.springsecurity.domain.Event;
 
