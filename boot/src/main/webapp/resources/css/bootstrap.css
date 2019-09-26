@@ -1132,6 +1132,7 @@ input:focus:required:invalid:focus, textarea:focus:required:invalid:focus, selec
   -moz-border-radius: 14px;
   border-radius: 14px;
 }
+.form-inline,
 .form-search input,
 .form-inline input,
 .form-horizontal input,

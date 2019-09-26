@@ -12,6 +12,9 @@
     <category name="org.springframework.security">
         <priority value="DEBUG" />
     </category>
+    <category name="Spring Security Debugger">
+        <priority value="DEBUG" />
+    </category>
 
     <root>
         <priority value="WARN" />
