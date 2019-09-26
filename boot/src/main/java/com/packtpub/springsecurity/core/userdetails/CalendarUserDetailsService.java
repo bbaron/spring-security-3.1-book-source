@@ -38,7 +38,7 @@ public class CalendarUserDetailsService implements UserDetailsService {
      */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        CalendarUser user = calendarUserDao.findUserByEmail(username);
+        CalendarUser user = calendarUserDao.findUserByOpenid(username);
         if (user == null) {
             throw new UsernameNotFoundException("Invalid username/password.");
         }

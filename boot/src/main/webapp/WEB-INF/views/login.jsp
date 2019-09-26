@@ -21,12 +21,11 @@
             You have been logged out.
         </div>
     </c:if>
-    <label for="username">Username</label>
-    <input type="text" id="username" name="username"/>
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password"/>
+    <input type="hidden" name="action" value="verify" />
+    <label for="openid_identifer">OpenID</label>
+    <input id="openid_identifier" name="openid_identifier" type="text"/>
     <div class="form-actions">
-        <input id="submit" class="btn" name="submit" type="submit" value="Login"/>
+        <input class="btn" name="submit" type="submit" value="Login"/>
     </div>
 </form>
 <jsp:include page="./includes/footer.jsp"/>
