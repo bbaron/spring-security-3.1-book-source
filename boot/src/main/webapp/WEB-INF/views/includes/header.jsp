@@ -39,9 +39,9 @@
                 </div>
                 <div id="nav-account" class="nav-collapse pull-right">
                     <ul class="nav">
-                        <sec:authorize access="authenticated" var="authenticated"/>
-                        <c:choose>
-                            <c:when test="${authenticated}">
+                            <sec:authorize access="authenticated" var="authenticated"/>
+                            <c:choose>
+                                <c:when test="${authenticated}">
                                 <c:url var="accountUrl" value="/accounts/my"/>
                                 <li id="greeting">
                                 	<div>
@@ -50,15 +50,15 @@
                                     		<sec:authentication property="name" />
                                    		</a>
                                  	</div>
-                                </li>
-                                <c:url var="logoutUrl" value="/logout"/>
-                                <li><a id="navLogoutLink" href="${logoutUrl}">Logout</a></li>
-                            </c:when>
-                            <c:otherwise>
-                                <c:url var="loginUrl" value="/login/form"/>
-                                <li><a id="navLoginLink" href="${loginUrl}">Login</a></li>
-                            </c:otherwise>
-                        </c:choose>
+                                    </li>
+                                    <c:url var="logoutUrl" value="/logout"/>
+                                    <li><a id="navLogoutLink" href="${logoutUrl}">Logout</a></li>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:url var="loginUrl" value="/login/form"/>
+                                    <li><a id="navLoginLink" href="${loginUrl}">Login</a></li>
+                                </c:otherwise>
+                            </c:choose>
                     </ul>
                 </div>
             </div>
