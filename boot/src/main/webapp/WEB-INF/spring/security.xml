@@ -35,8 +35,7 @@
     <authentication-manager>
         <ldap-authentication-provider server-ref="ldapServer"
                 user-search-filter="(uid={0})"
-                group-search-base="ou=Groups">
-            <password-compare hash="{ssha}"/>
-        </ldap-authentication-provider>
+                group-search-base="ou=Groups"
+                user-details-class="inetOrgPerson"/>
     </authentication-manager>
 </bean:beans>
