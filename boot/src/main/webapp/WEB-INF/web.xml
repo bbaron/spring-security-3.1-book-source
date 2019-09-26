@@ -11,6 +11,7 @@
             /WEB-INF/spring/i18n.xml
             /WEB-INF/spring/security.xml
             /WEB-INF/spring/cleaner.xml
+            /WEB-INF/spring/ipTokenRepository.xml
         </param-value>
     </context-param>
     <listener>
