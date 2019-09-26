@@ -51,6 +51,10 @@ public final class CalendarPermissionEvaluator implements PermissionEvaluator {
         if(event == null) {
             return true;
         }
+        GrantedAuthority adminRole = new SimpleGrantedAuthority("ROLE_ADMIN");
+        if(authentication.getAuthorities().contains(adminRole)) {
+            return true;
+        }
         String currentUserEmail = authentication.getName();
         String ownerEmail = extractEmail(event.getOwner());
         if("write".equals(permission)) {

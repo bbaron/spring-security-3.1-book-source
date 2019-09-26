@@ -65,6 +65,7 @@ public interface CalendarService {
      * @throws RuntimeException
      *             if the {@link Event} cannot be found.
      */
+    @PostAuthorize("hasPermission(returnObject,'read')")
     Event getEvent(int eventId);
 
     /**
