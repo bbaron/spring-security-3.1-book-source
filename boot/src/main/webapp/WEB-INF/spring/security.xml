@@ -1,57 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bean:beans xmlns:bean="http://www.springframework.org/schema/beans"
+<b:beans xmlns:b="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="http://www.springframework.org/schema/security"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
-        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+    xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <http pattern="/resources/**" security="none"/>
-    <debug/>
+    <global-method-security proxy-target-class="true"
+        pre-post-annotations="enabled"/>
+
+    <http security="none" pattern="/resources/**"/>
+    <http security="none" pattern="/org.richfaces.resources/**"/>
     <http auto-config="true"
-            use-expressions="true"
-            create-session="never">
-        <intercept-url pattern="/"
-                access="permitAll"/>
-        <intercept-url pattern="/login/*"
-                access="permitAll"/>
-        <intercept-url pattern="/signup/*"
-                access="permitAll"/>
-        <intercept-url pattern="/logout"
-                access="permitAll"/>
-        <intercept-url pattern="/errors/**"
-                access="permitAll"/>
-        <intercept-url pattern="/events/"
-                access="hasRole('ROLE_ADMIN')"/>
-        <intercept-url pattern="/admin/**"
-                access="hasRole('ROLE_ADMIN')"/>
-        <intercept-url pattern="/**"
-                access="hasRole('ROLE_USER')"/>
-        <access-denied-handler error-page="/errors/403"/>
-        <form-login login-page="/login/form"
-                login-processing-url="/login"
-                username-parameter="username"
-                password-parameter="password"
-                authentication-failure-url="/login/form?error"
-                default-target-url="/default"/>
-        <logout logout-url="/logout"
-                logout-success-url="/login/form?logout"/>
-
-        <custom-filter
-                ref="concurrencyControlFilter"
-                position="CONCURRENT_SESSION_FILTER"/>
-        <session-management
-                session-authentication-strategy-ref="concurrentSessionManager"/>
+        use-expressions="true"
+        entry-point-ref="entryPoint">
+        <intercept-url pattern="/jsf-login.jsf" access="permitAll"/>
+        <intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
+        <form-login login-page="/jsf-login.jsf"
+                authentication-failure-url="/jsf-login.jsf"
+                default-target-url="/"
+                always-use-default-target="true"/>
+        <expression-handler ref="jsfWebExpressionHandler"/>
     </http>
-    <authentication-manager>
+    <authentication-manager alias="authenticationManager">
         <authentication-provider>
             <user-service>
                 <user name="user1@example.com"
-                        password="user1"
-                        authorities="ROLE_USER"/>
+                    password="user1"
+                    authorities="ROLE_USER"/>
+                <user name="&lt;b&gt;hi&lt;/b&gt;"
+                    password="user1"
+                    authorities="ROLE_USER"/>
                 <user name="admin1@example.com"
-                        password="admin1"
-                        authorities="ROLE_USER,ROLE_ADMIN"/>
+                    password="admin1"
+                    authorities="ROLE_USER,ROLE_ADMIN"/>
+                <user name="user2@example.com"
+                    password="user2"
+                    authorities="ROLE_USER"/>
             </user-service>
         </authentication-provider>
     </authentication-manager>
-</bean:beans>
+    <b:bean id="jsfWebExpressionHandler" class="com.packtpub.springsecurity.JsfDefaultWebSecurityExpressionhandler"/>
+</b:beans>
