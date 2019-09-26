@@ -31,7 +31,11 @@
         <logout logout-url="/logout"
                 logout-success-url="/login/form?logout"/>
     </http>
-    <ldap-server id="ldapServer" ldif="classpath:/ldif/calendar.ldif" root="dc=jbcpcalendar,dc=com"/>
+    <ldap-server ldif="classpath:/ldif/calendar.ldif" root="dc=jbcpcalendar,dc=com"/>
+    <ldap-server id="ldapServer"
+            url="ldap://localhost:33389/dc=jbcpcalendar,dc=com"
+            manager-dn="uid=admin,ou=system"
+            manager-password="secret"/>
     <ldap-user-service id="ldapUserService"
             server-ref="ldapServer"
             user-search-filter="(uid={0})"
