@@ -43,11 +43,12 @@ public final class RegisteringOpenIDAuthenticationUserDetailsService implements 
             return userDetailsService.loadUserByUsername(openid);
         } catch (UsernameNotFoundException e) {
         }
+        List<OpenIDAttribute> attrs = token.getAttributes();
         CalendarUser newUser = new CalendarUser();
         newUser.setOpenid(openid);
-        newUser.setEmail("mock@example.com");
-        newUser.setFirstName("Dynamic");
-        newUser.setLastName("Provision");
+        newUser.setEmail(getAttr("email", attrs));
+        newUser.setFirstName(getFirstName(attrs));
+        newUser.setLastName(getLastName(attrs));
         newUser.setPassword("notused");
         calendarService.createUser(newUser);
         return userDetailsService.loadUserByUsername(openid);

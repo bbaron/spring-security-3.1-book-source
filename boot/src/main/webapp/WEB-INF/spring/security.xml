@@ -28,7 +28,16 @@
                 login-processing-url="/login"
                 authentication-failure-url="/login/form?error"
                 default-target-url="/default"
-                user-service-ref="registeringOpenIDAuthenticationUserDetailsService"/>
+                user-service-ref="registeringOpenIDAuthenticationUserDetailsService">
+            <attribute-exchange>
+                <openid-attribute name="email"
+                        type="http://schema.openid.net/contact/email"
+                        required="true"/>
+                <openid-attribute name="fullname"
+                        type="http://schema.openid.net/namePerson"
+                        required="true" />
+            </attribute-exchange>
+        </openid-login>
         <logout logout-url="/logout"
                 logout-success-url="/login/form?logout"/>
     </http>
