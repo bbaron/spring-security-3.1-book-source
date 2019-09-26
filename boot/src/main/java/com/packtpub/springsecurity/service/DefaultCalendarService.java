@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcOperations;
-import org.springframework.security.authentication.encoding.PasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import com.packtpub.springsecurity.dataaccess.CalendarUserDao;
@@ -74,7 +74,7 @@ public class DefaultCalendarService implements CalendarService {
     }
 
     public int createUser(CalendarUser user) {
-        String encodedPassword = passwordEncoder.encodePassword(user.getPassword(), null);
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
         int userId = userDao.createUser(user);
         jdbcOperations.update("insert into calendar_user_authorities(calendar_user,authority) values (?,?)", userId,
