@@ -34,6 +34,9 @@
     <bean id="calendarService"
           class="com.packtpub.springsecurity.service.DefaultCalendarService"
           autowire="constructor">
+        <security:intercept-methods>
+            <security:protect access="ROLE_ADMIN" method="getEvents"/>
+        </security:intercept-methods>
     </bean>
 
     <!--
