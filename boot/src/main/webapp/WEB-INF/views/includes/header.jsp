@@ -47,7 +47,7 @@
                                     <li><a id="navLogoutLink" href="${logoutUrl}">Logout</a></li>
                                 </c:when>
                                 <c:otherwise>
-                                    <c:url var="loginUrl" value="/login/form"/>
+                                    <c:url var="loginUrl" value="/events/my"/>
                                     <li><a id="navLoginLink" href="${loginUrl}">Login</a></li>
                                 </c:otherwise>
                             </c:choose>

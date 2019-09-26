@@ -6,7 +6,7 @@
         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
     <http pattern="/resources/**" security="none"/>
-    <http auto-config="true" use-expressions="true">
+    <http use-expressions="true" entry-point-ref="casEntryPoint">
         <intercept-url pattern="/"
                 access="permitAll"/>
         <intercept-url pattern="/login/*"
@@ -22,25 +22,21 @@
         <intercept-url pattern="/**"
                 access="hasRole('ROLE_USER')"/>
         <access-denied-handler error-page="/errors/403"/>
-        <form-login login-page="/login/form"
-                login-processing-url="/login"
-                username-parameter="username"
-                password-parameter="password"
-                authentication-failure-url="/login/form?error"
-                default-target-url="/default"/>
+
+        <custom-filter ref="casFilter" position="CAS_FILTER"/>
+
         <logout logout-url="/logout"
                 logout-success-url="/login/form?logout"/>
     </http>
     <authentication-manager alias="authenticationManager">
-        <authentication-provider>
-            <user-service id="userDetailsService">
-                <user name="user1@example.com"
-                        password="user1"
-                        authorities="ROLE_USER"/>
-                <user name="admin1@example.com"
-                        password="admin1"
-                        authorities="ROLE_USER,ROLE_ADMIN"/>
-            </user-service>
-        </authentication-provider>
+        <authentication-provider ref="casAuthProvider" />
     </authentication-manager>
+    <user-service id="userDetailsService">
+        <user name="user1@example.com"
+                password="user1"
+                authorities="ROLE_USER"/>
+        <user name="admin1@example.com"
+                password="admin1"
+                authorities="ROLE_USER,ROLE_ADMIN"/>
+    </user-service>
 </bean:beans>

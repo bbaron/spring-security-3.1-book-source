@@ -10,6 +10,7 @@
             /WEB-INF/spring/services.xml
             /WEB-INF/spring/i18n.xml
             /WEB-INF/spring/security.xml
+            /WEB-INF/spring/security-cas.xml
         </param-value>
     </context-param>
     <listener>
