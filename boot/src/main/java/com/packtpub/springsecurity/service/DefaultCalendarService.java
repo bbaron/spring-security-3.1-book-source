@@ -27,9 +27,11 @@ import com.packtpub.springsecurity.domain.Event;
 public class DefaultCalendarService implements CalendarService {
     private final EventDao eventDao;
     private final CalendarUserDao userDao;
+    private final MutableAclService aclService;
+    private final UserContext userContext;
 
     @Autowired
-    public DefaultCalendarService(EventDao eventDao, CalendarUserDao userDao) {
+    public DefaultCalendarService(EventDao eventDao, CalendarUserDao userDao, MutableAclService aclService, UserContext userContext) {
         if (eventDao == null) {
             throw new IllegalArgumentException("eventDao cannot be null");
         }
@@ -38,6 +40,8 @@ public class DefaultCalendarService implements CalendarService {
         }
         this.eventDao = eventDao;
         this.userDao = userDao;
+        this.aclService = aclService;
+        this.userContext = userContext;
     }
 
     public Event getEvent(int eventId) {
@@ -46,7 +50,16 @@ public class DefaultCalendarService implements CalendarService {
 
     @Transactional
     public int createEvent(Event event) {
-        return eventDao.createEvent(event);
+        int result = eventDao.createEvent(event);
+        event.setId(result);
+
+        MutableAcl acl = aclService.createAcl(new ObjectIdentityImpl(event));
+        PrincipalSid sid = new PrincipalSid(userContext.getCurrentUser().getEmail());
+        acl.setOwner(sid);
+        acl.insertAce(0,  BasePermission.READ, sid, true);
+        aclService.updateAcl(acl);
+
+        return result;
     }
 
     public List<Event> findForUser(int userId) {
