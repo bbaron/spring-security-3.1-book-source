@@ -34,8 +34,8 @@
                 logout-success-url="/login/form?logout"/>
 
         <session-management>
-            <concurrency-control
-                    max-sessions="1"/>
+            <concurrency-control max-sessions="1"
+                expired-url="/login/form?expired"/>
         </session-management>
     </http>
     <authentication-manager>

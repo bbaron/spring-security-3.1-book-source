@@ -2,9 +2,7 @@
                     Calendar - README FILE
 ###############################################################################
 
-The Calendar application is part of Packt Publishing's Spring Security 3.1
-book and is not intended for distribution other than from Packt Publishing
-and for those that have purchased the book.
+The Calendar application is part of Packt Publishing's Spring Security 3.1.
 
 ===============================================================================
 Running the Calendar application
@@ -14,7 +12,6 @@ There are number of ways for running the Calendar application. A summary of the
 methods of running the application are discussed below. Detailed instructions
 for each method are found in the following sections.
 
-  * Using Gradle -        This is the easiest method of running the application
   * Using Maven 3 -       For those that are more familiar with Maven, the
                           application can be ran using Maven 3 and Cargo.
   * Spring Tool Suite -   This is the best way to follow along with the book
@@ -30,28 +27,6 @@ command line
 
 You will also need an internet connection to download the dependencies for the
 first time.
-
--------------------------------------------------------------------------------
-Using Gradle
--------------------------------------------------------------------------------
-
-Gradle is the easiest way to run the application, because it only requires that
-a JDK is installed and an internet connection. To run the application:
-
-  Mac and Linux based OS's can run the application by executing the following
-  within this directory
-
-    ./run
-
-  Windows Users can run the application by executing the following within this
-  directory
-
-    .\run.bat
-
-  NOTE: The first time you run the command, it may take a while as the
-        dependencies are downloaded.
-
-The application will be available at http://localhost:8080/calendar/
 
 -------------------------------------------------------------------------------
 Using Maven 3

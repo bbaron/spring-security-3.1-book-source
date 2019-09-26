@@ -21,6 +21,11 @@
             You have been logged out.
         </div>
     </c:if>
+    <c:if test="${param.expired != null}">
+        <div class="alert alert-success">
+            You have been forcibly logged out due to multiple sessions on the same account (only one active session per user is allowed).
+        </div>
+    </c:if>
     <label for="username">Username</label>
     <input type="text" id="username" name="username"/>
     <label for="password">Password</label>
