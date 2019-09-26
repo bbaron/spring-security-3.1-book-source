@@ -10,11 +10,13 @@
             /WEB-INF/spring/services.xml
             /WEB-INF/spring/i18n.xml
             /WEB-INF/spring/security.xml
-            /WEB-INF/spring/security-ldap-explicitly.xml
         </param-value>
     </context-param>
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
     </listener>
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>

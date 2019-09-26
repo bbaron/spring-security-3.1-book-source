@@ -7,20 +7,28 @@
 <c:set var="pageTitle" value="Signup" scope="request"/>
 <jsp:include page="../includes/header.jsp"/>
 <form:form action="./new" method="post" modelAttribute="signupForm">
-    <form:errors path="*" element="div" cssClass="alert alert-error"/>
+    <form:errors path="*" element="div" cssClass="errors"/>
     <fieldset>
         <legend>User Information</legend>
-        <label for="firstName">First Name</label>
-        <form:input path="firstName" id="firstName"/>
-        <label for="lastName">Last Name</label>
-        <form:input path="lastName" id="lastName"/>
-        <label for="email">Email (Username)</label>
-        <form:input path="email" id="email"/>
-        <label for="password">Password</label>
-        <form:password path="password" id="password"/>
-        <div>
+        <p>
+            <label for="firstName">First Name</label>
+            <form:input path="firstName" id="firstName"/>
+        </p>
+        <p>
+            <label for="lastName">Last Name</label>
+            <form:input path="lastName" id="lastName"/>
+        </p>
+        <p>
+            <label for="email">Email (Username)</label>
+            <form:input path="email" id="email"/>
+        </p>
+        <p>
+            <label for="password">Password</label>
+            <form:password path="password" id="password"/>
+        </p>
+        <p>
             <input id="submit" type="submit" value="Create Account"/>
-        </div>
+        </p>
     </fieldset>
 </form:form>
 <jsp:include page="../includes/footer.jsp"/>
