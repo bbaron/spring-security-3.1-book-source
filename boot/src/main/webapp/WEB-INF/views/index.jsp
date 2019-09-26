@@ -6,12 +6,12 @@
 <c:set var="pageTitle" value="Welcome to myCalendar!" scope="request"/>
 <jsp:include page="./includes/header.jsp"/>
 <p>Below you can find some highlights about myCalendar. Each sample will have a slightly different summary depending on what has been done.</p>
-<h2>Chapter 7 - Client Certificates</h2>
+<h2>Chapter 8</h2>
 <ul>
+    <li>This chapter demonstrates OpenID</li>
     <li><a id="eventsLink" href="events/">All Events</a> - shows all events for all users, but only allows administrators to access the page.</li>
-    <li><a id="myEventsLink" href="events/my">My Events</a> - shows all events that the current user is owner or attendee.</li>
-    <li><a id="createEventLink" href="events/form">Create Event</a> - will allow creating a new Event with current user as the owner.</li>
-    <li><a id="logoutLink" href="logout">Logout</a> - allows the user to logout</li>
+    <li><a id="myEventsLink" href="events/my">My Events</a> - shows all events that the current user is the owner or attendee.</li>
+    <li><a id="createEventLink" href="events/form">Create Event</a> - will allow creating a new Event with the current user as the owner.</li>
     <li>
         <a id="h2Link" href="admin/h2/">H2 Database Console</a> - Allows you to interact with the database using a web console. To use it:
         <ul>

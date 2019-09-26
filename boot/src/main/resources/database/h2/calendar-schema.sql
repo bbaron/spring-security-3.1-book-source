@@ -1,5 +1,6 @@
 create table calendar_users (
     id bigint identity,
+    openid varchar(1000) not null unique,
     email varchar(256) not null unique,
     password varchar(256) not null,
     first_name varchar(256) not null,

@@ -7,7 +7,7 @@
 <jsp:include page="./includes/header.jsp"/>
 
 <c:url value="/login" var="loginUrl"/>
-<form action="${loginUrl}" method="post">
+<form action="${loginUrl}" method="post" id="openid_form">
     <c:if test="${param.error != null}">
         <div class="alert alert-error">
             Failed to login.

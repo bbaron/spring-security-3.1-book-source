@@ -7,19 +7,20 @@
         <meta http-equiv="content-type" content="text/html;charset=utf-8" />
         <c:url var="cssUrl" value="/resources/css/bootstrap.css"/>
         <link href="${cssUrl}" rel="stylesheet"/>
-        <style>
-          body {
-            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-          }
-        </style>
+        <c:url var="openidCssUrl" value="/resources/css/openid.css"/>
+        <link href="${openidCssUrl}" rel="stylesheet"/>
 
         <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
           <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
+        <c:url value="/resources/js/jquery-1.2.6.min.js" var="jqueryUrl"/>
+        <script type="text/javascript" src="${jqueryUrl}"></script>
+        <c:url value="/resources/js/openid-jquery.js" var="openidJqueryUrl"/>
+        <script type="text/javascript" src="${openidJqueryUrl}"></script>
     </head>
     <body>
-      <div id="nav-bar" class="navbar navbar-fixed-top">
+      <div id="nav-bar" class="navbar">
         <div class="navbar-inner">
             <div class="container">
                 <c:url var="welcomeUrl" value="/" />
@@ -39,18 +40,18 @@
                 </div>
                 <div id="nav-account" class="nav-collapse pull-right">
                     <ul class="nav">
-                            <sec:authorize access="authenticated" var="authenticated"/>
-                            <c:choose>
-                                <c:when test="${authenticated}">
-                                    <li id="greeting"><div>Welcome <sec:authentication property="name" /></div></li>
-                                    <c:url var="logoutUrl" value="/logout"/>
-                                    <li><a id="navLogoutLink" href="${logoutUrl}">Logout</a></li>
-                                </c:when>
-                                <c:otherwise>
-                                    <c:url var="loginUrl" value="/login/form"/>
-                                    <li><a id="navLoginLink" href="${loginUrl}">Login</a></li>
-                                </c:otherwise>
-                            </c:choose>
+                        <sec:authorize access="authenticated" var="authenticated"/>
+                        <c:choose>
+                            <c:when test="${authenticated}">
+                                <li id="greeting"><div>Welcome <sec:authentication property="principal.name" /></div></li>
+                                <c:url var="logoutUrl" value="/logout"/>
+                                <li><a id="navLogoutLink" href="${logoutUrl}">Logout</a></li>
+                            </c:when>
+                            <c:otherwise>
+                                <c:url var="loginUrl" value="/login/form"/>
+                                <li><a id="navLoginLink" href="${loginUrl}">Login</a></li>
+                            </c:otherwise>
+                        </c:choose>
                     </ul>
                 </div>
             </div>
