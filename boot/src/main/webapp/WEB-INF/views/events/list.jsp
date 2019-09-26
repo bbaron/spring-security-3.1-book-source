@@ -27,14 +27,16 @@
             </tr>
         </c:if>
          <c:forEach items="${events}" var="event">
-            <tr>
-                <fmt:formatDate value="${event.when.time}" type="both" pattern="yyyy-MM-dd HH:mm" var="when"/>
-                <td><c:out value="${when}"/></td>
-                <td><c:out value="${event.owner.name}" /></td>
-                <td><c:out value="${event.attendee.name}" /></td>
-                <c:url var="eventUrl" value="${event.id}"/>
-                <td><a href="${eventUrl}"><c:out value="${event.summary}" /></a></td>
-            </tr>
+            <sec:authorize access="hasPermission(#event,'read') or hasPermission(#event,'admin_read')">
+                <tr>
+                    <fmt:formatDate value="${event.when.time}" type="both" pattern="yyyy-MM-dd HH:mm" var="when"/>
+                    <td><c:out value="${when}"/></td>
+                    <td><c:out value="${event.owner.name}" /></td>
+                    <td><c:out value="${event.attendee.name}" /></td>
+                    <c:url var="eventUrl" value="${event.id}"/>
+                    <td><a href="${eventUrl}"><c:out value="${event.summary}" /></a></td>
+                </tr>
+            </sec:authorize>
         </c:forEach>
     </tbody>
 </table>

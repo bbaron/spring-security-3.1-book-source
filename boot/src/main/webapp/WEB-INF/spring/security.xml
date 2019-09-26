@@ -34,6 +34,7 @@
                 default-target-url="/default"/>
         <logout logout-url="/logout"
                 logout-success-url="/login/form?logout"/>
+        <expression-handler ref="webExpressionHandler"/>
     </http>
     <authentication-manager>
         <authentication-provider user-service-ref="calendarUserDetailsService"/>

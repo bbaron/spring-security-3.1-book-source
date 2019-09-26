@@ -3,11 +3,9 @@ package com.packtpub.springsecurity.service;
 import java.util.List;
 
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.security.access.prepost.PostAuthorize;
-import org.springframework.security.access.prepost.PostFilter;
 
-import com.packtpub.springsecurity.domain.CalendarUser;
 import com.packtpub.springsecurity.domain.Event;
+import com.packtpub.springsecurity.domain.CalendarUser;
 
 public interface CalendarService {
 
@@ -93,7 +91,5 @@ public interface CalendarService {
      *
      * @return a non-null {@link List} of {@link Event}'s
      */
-    @PostFilter("hasPermission(filterObject, 'read') "+
-        "or hasPermission(filterObject, 'admin_read')")
     List<Event> getEvents();
 }

@@ -61,4 +61,11 @@
     <bean id="permissionFactory" class="org.springframework.security.acls.domain.DefaultPermissionFactory">
         <constructor-arg value="com.packtpub.springsecurity.acls.domain.CustomPermission"/>
     </bean>
+
+    <!--
+        JSP Permissions
+     -->
+     <bean id="webExpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler">
+        <property name="permissionEvaluator" ref="permissionEvaluator"/>
+     </bean>
 </beans>
