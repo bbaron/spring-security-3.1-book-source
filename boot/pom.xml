@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.packtpub.springsecurity</groupId>
-  <artifactId>chapter02.07-calendar</artifactId>
+  <artifactId>chapter03.00-calendar</artifactId>
   <version>1.0</version>
   <packaging>war</packaging>
   <licenses>
@@ -14,12 +14,6 @@
     </license>
   </licenses>
   <build>
-    <resources>
-      <resource>
-        <filtering>true</filtering>
-        <directory>${basedir}/src/main/resources</directory>
-      </resource>
-    </resources>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -41,12 +35,6 @@
           </container>
           <configuration>
             <home>${project.build.directory}/tomcat7x/container</home>
-            <configfiles>
-              <configfile>
-                <file>${project.build.directory}/classes/tomcat/server.xml</file>
-                <todir>conf</todir>
-              </configfile>
-            </configfiles>
             <deployables>
               <deployable>
                 <properties>

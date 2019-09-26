@@ -6,11 +6,9 @@
 <c:set var="pageTitle" value="Welcome to myCalendar!" scope="request"/>
 <jsp:include page="./includes/header.jsp"/>
 <p>Below you can find some highlights about myCalendar. Each sample will have a slightly different summary depending on what has been done.</p>
-<h2>default-target-url by role</h2>
+<h2>Chapter 3</h2>
 <ul>
-    <li>Visit the My Events Page, login, and observe you are on the My Events Page. Logout.</li>
-    <li>Login as user1@example.com / user1 and observe you are sent to the Welecome page. Logout.</li>
-    <li>Login as admin1@example.com / admin1 and observe you are sent to the All Events page. Logout.</li>
+    <li>This chapter starts off with some additional functionality to get us ready to support custom authentication and logging in after signing up. At this point we have not implemented signup so it will not work</li>
     <li><a id="eventsLink" href="events/">All Events</a> - shows all events for all users, but only allows administrators to access the page.</li>
     <li><a id="myEventsLink" href="events/my">My Events</a> - shows all events that user1@example.com is the owner or attendee. We will discuss in Chapter 3 how to obtain the current user's events.</li>
     <li><a id="createEventLink" href="events/form">Create Event</a> - will allow creating a new Event with user1@example.com as the owner. We will discuss in Chapter 3 how to make the current user the owner.</li>
