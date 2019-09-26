@@ -11,8 +11,6 @@
                 access="permitAll"/>
         <intercept-url pattern="/login/*"
                 access="permitAll"/>
-        <intercept-url pattern="/signup/*"
-                access="permitAll"/>
         <intercept-url pattern="/logout"
                 access="permitAll"/>
         <intercept-url pattern="/errors/**"
@@ -20,7 +18,7 @@
         <intercept-url pattern="/events/"
                 access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/admin/**"
-                access="hasRole('ROLE_ADMIN') and fullyAuthenticated"/>
+                access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/**"
                 access="hasRole('ROLE_USER')"/>
         <access-denied-handler error-page="/errors/403"/>
@@ -30,8 +28,6 @@
                 password-parameter="password"
                 authentication-failure-url="/login/form?error"
                 default-target-url="/default"/>
-        <remember-me key="jbcpCalendar"
-                services-ref="remembermeServices"/>
         <logout logout-url="/logout"
                 logout-success-url="/login/form?logout"/>
     </http>

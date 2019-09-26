@@ -21,22 +21,12 @@
             You have been logged out.
         </div>
     </c:if>
-    <p>
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username"/>
-    </p>
-    <p>
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password"/>
-    </p>
-    <p>
-        <label for="remember">Remember Me?</label>
-        <input type="checkbox" id="remember"
-                name="rememberme"
-                value="true"/>
-    </p>
-    <p>
-        <input id="submit" name="submit" type="submit" value="Login"/>
-    </p>
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username"/>
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password"/>
+    <div class="form-actions">
+        <input id="submit" class="btn" name="submit" type="submit" value="Login"/>
+    </div>
 </form>
 <jsp:include page="./includes/footer.jsp"/>

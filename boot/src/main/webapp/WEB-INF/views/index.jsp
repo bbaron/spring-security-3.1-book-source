@@ -6,9 +6,8 @@
 <c:set var="pageTitle" value="Welcome to myCalendar!" scope="request"/>
 <jsp:include page="./includes/header.jsp"/>
 <p>Below you can find some highlights about myCalendar. Each sample will have a slightly different summary depending on what has been done.</p>
-<h2>Chapter 6 - Remember Me</h2>
+<h2>Chapter 7 - Client Certificates</h2>
 <ul>
- <li>This chapter discusses Spring Security's remember me feature. You may be interested in using a plugin like <a href="https://addons.mozilla.org/en-US/firefox/addon/firecookie/reviews/">Firecookie</a> for removing your JSESSIONID (to simulate closing the browser / session timing out).</li>
     <li><a id="eventsLink" href="events/">All Events</a> - shows all events for all users, but only allows administrators to access the page.</li>
     <li><a id="myEventsLink" href="events/my">My Events</a> - shows all events that the current user is owner or attendee.</li>
     <li><a id="createEventLink" href="events/form">Create Event</a> - will allow creating a new Event with current user as the owner.</li>
