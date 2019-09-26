@@ -68,6 +68,9 @@ public interface CalendarService {
      * @throws RuntimeException
      *             if the {@link Event} cannot be found.
      */
+    @PostAuthorize("hasRole('ROLE_ADMIN') or " +
+            "principal.id == returnObject.owner.id or " +
+            "principal.id == returnObject.attendee.id")
     Event getEvent(int eventId);
 
     /**
