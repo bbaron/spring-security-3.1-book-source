@@ -16,6 +16,7 @@
                 default-target-url="/default"/>
         <logout logout-url="/logout"
                 logout-success-url="/login/form?logout"/>
+        <expression-handler ref="customWebSecurityExpressionHandler"/>
     </http>
     <authentication-manager alias="authenticationManager">
         <authentication-provider ref="calendarUserAuthenticationProvider"/>
