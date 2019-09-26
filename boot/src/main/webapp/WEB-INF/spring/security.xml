@@ -33,11 +33,11 @@
         <logout logout-url="/logout"
                 logout-success-url="/login/form?logout"/>
 
-        <session-management>
-            <concurrency-control max-sessions="1"
-                expired-url="/login/form?expired"
-                error-if-maximum-exceeded="true"/>
-        </session-management>
+        <custom-filter
+                ref="concurrencyControlFilter"
+                position="CONCURRENT_SESSION_FILTER"/>
+        <session-management
+                session-authentication-strategy-ref="concurrentSessionManager"/>
     </http>
     <authentication-manager>
         <authentication-provider>
