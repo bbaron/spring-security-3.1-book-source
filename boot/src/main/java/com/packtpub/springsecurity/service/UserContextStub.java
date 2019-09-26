@@ -7,12 +7,15 @@ import com.packtpub.springsecurity.dataaccess.CalendarUserDao;
 import com.packtpub.springsecurity.domain.CalendarUser;
 
 /**
+ * NOTE: This is no longer used. See {@link SpringSecurityUserContext}.
+ *
  * Returns the same user for every call to {@link #getCurrentUser()}. This is used prior to adding security, so that the
  * rest of the application can be used.
  *
  * @author Rob Winch
+ * @see SpringSecurityUserContext
  */
-@Component
+//@Component
 public class UserContextStub implements UserContext {
     private final CalendarUserDao userService;
     /**
