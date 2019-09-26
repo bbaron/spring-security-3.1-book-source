@@ -32,6 +32,9 @@
                 default-target-url="/default"/>
         <logout logout-url="/logout"
                 logout-success-url="/login/form?logout"/>
+
+        <session-management
+                session-fixation-protection="none"/>
     </http>
     <authentication-manager>
         <authentication-provider>
