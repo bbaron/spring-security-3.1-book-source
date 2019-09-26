@@ -37,6 +37,10 @@
         class="org.springframework.security.cas.web.CasAuthenticationFilter">
         <property name="authenticationManager" ref="authenticationManager"/>
         <property name="filterProcessesUrl" value="/login"/>
+
+        <!-- obtain proxy granting tickets -->
+        <property name="proxyGrantingTicketStorage" ref="pgtStorage"/>
+        <property name="proxyReceptorUrl" value="/pgtUrl"/>
     </bean>
 
     <bean id="casAuthProvider" class="org.springframework.security.cas.authentication.CasAuthenticationProvider">
@@ -48,6 +52,10 @@
 
     <bean id="ticketValidator" class="org.jasig.cas.client.validation.Cas20ProxyTicketValidator">
         <constructor-arg value="https://${cas.server.host}/cas" />
+
+        <!-- Obtain Proxy Grating Tickets -->
+        <property name="proxyCallbackUrl" value="https://${cas.service.host}/calendar/pgtUrl"/>
+        <property name="proxyGrantingTicketStorage" ref="pgtStorage"/>
     </bean>
     <bean id="authenticationUserDetailsService" class="org.springframework.security.core.userdetails.UserDetailsByNameServiceWrapper">
         <constructor-arg ref="userDetailsService" />
@@ -55,4 +63,10 @@
 
     <!-- Handles a Single Logout Request from the CAS Server must be in custom-filter of security.xml -->
     <bean id="singleLogoutFilter" class="org.jasig.cas.client.session.SingleSignOutFilter"/>
+
+    <!-- Obtain Proxy Granting Tickets -->
+    <bean id="pgtStorage" class="org.jasig.cas.client.proxy.ProxyGrantingTicketStorageImpl"/>
+    <task:scheduled-tasks>
+        <task:scheduled ref="pgtStorage" method="cleanUp" fixed-delay="300000"/>
+    </task:scheduled-tasks>
 </beans>
