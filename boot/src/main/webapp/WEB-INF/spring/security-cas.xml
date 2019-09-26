@@ -13,7 +13,6 @@
             class="org.springframework.security.cas.ServiceProperties">
         <property name="service"
                 value="https://${cas.service.host}/calendar/login"/>
-        <property name="authenticateAllArtifacts" value="true"/>
     </bean>
     <!--
         Allows changing where the CAS Server and CAS Service are easily
@@ -38,16 +37,6 @@
         class="org.springframework.security.cas.web.CasAuthenticationFilter">
         <property name="authenticationManager" ref="authenticationManager"/>
         <property name="filterProcessesUrl" value="/login"/>
-
-        <!-- obtain proxy granting tickets -->
-        <property name="proxyGrantingTicketStorage" ref="pgtStorage"/>
-        <property name="proxyReceptorUrl" value="/pgtUrl"/>
-
-        <property name="serviceProperties" ref="serviceProperties"/>
-        <property name="authenticationDetailsSource">
-            <bean class=
-                "org.springframework.security.cas.web.authentication.ServiceAuthenticationDetailsSource"/>
-        </property>
     </bean>
 
     <bean id="casAuthProvider" class="org.springframework.security.cas.authentication.CasAuthenticationProvider">
@@ -71,26 +60,17 @@
         </property>
     </bean>
 
-    <bean id="ticketValidator" class="org.jasig.cas.client.validation.Cas20ProxyTicketValidator">
+    <bean id="ticketValidator" class="org.jasig.cas.client.validation.Saml11TicketValidator">
         <constructor-arg value="https://${cas.server.host}/cas" />
-
-        <!-- Obtain Proxy Grating Tickets -->
-        <property name="proxyCallbackUrl" value="https://${cas.service.host}/calendar/pgtUrl"/>
-        <property name="proxyGrantingTicketStorage" ref="pgtStorage"/>
-
-        <property name="acceptAnyProxy" value="true"/>
     </bean>
-
-    <bean id="authenticationUserDetailsService" class="org.springframework.security.core.userdetails.UserDetailsByNameServiceWrapper">
-        <constructor-arg ref="userDetailsService" />
+    <bean id="authenticationUserDetailsService" class="org.springframework.security.cas.userdetails.GrantedAuthorityFromAssertionAttributesUserDetailsService">
+        <constructor-arg>
+            <array>
+                <value>role</value>
+            </array>
+        </constructor-arg>
     </bean>
 
     <!-- Handles a Single Logout Request from the CAS Server must be in custom-filter of security.xml -->
     <bean id="singleLogoutFilter" class="org.jasig.cas.client.session.SingleSignOutFilter"/>
-
-    <!-- Obtain Proxy Granting Tickets -->
-    <bean id="pgtStorage" class="org.jasig.cas.client.proxy.ProxyGrantingTicketStorageImpl"/>
-    <task:scheduled-tasks>
-        <task:scheduled ref="pgtStorage" method="cleanUp" fixed-delay="300000"/>
-    </task:scheduled-tasks>
 </beans>

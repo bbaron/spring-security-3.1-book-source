@@ -32,12 +32,4 @@
     <authentication-manager alias="authenticationManager">
         <authentication-provider ref="casAuthProvider" />
     </authentication-manager>
-    <user-service id="userDetailsService">
-        <user name="user1@example.com"
-                password="user1"
-                authorities="ROLE_USER"/>
-        <user name="admin1@example.com"
-                password="admin1"
-                authorities="ROLE_USER,ROLE_ADMIN"/>
-    </user-service>
 </bean:beans>
