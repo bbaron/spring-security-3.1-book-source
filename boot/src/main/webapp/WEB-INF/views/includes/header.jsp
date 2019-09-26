@@ -44,21 +44,17 @@
                             <c:when test="${authenticated}">
                                 <c:url var="accountUrl" value="/accounts/my"/>
                                 <li id="greeting">
-                                	<div>
-                                    	Welcome
-                                    	<a id="navMyAccount" href="${accountUrl}">
-                                    		<sec:authentication property="name" />
-                                   		</a>
-                                 	</div>
-                                    </li>
-                                    <c:url var="logoutUrl" value="/logout"/>
-                                    <li><a id="navLogoutLink" href="${logoutUrl}">Logout</a></li>
-                                </c:when>
-                                <c:otherwise>
-                                    <c:url var="loginUrl" value="/login/form"/>
-                                    <li><a id="navLoginLink" href="${loginUrl}">Login</a></li>
-                                </c:otherwise>
-                            </c:choose>
+                                    Welcome
+                                    <a id="navMyAccount" href="${accountUrl}"><sec:authentication property="name" /></a>
+                                </li>
+                                <c:url var="logoutUrl" value="/logout"/>
+                                <li><a id="navLogoutLink" href="${logoutUrl}">Logout</a></li>
+                            </c:when>
+                            <c:otherwise>
+                                <c:url var="loginUrl" value="/login/form"/>
+                                <li><a id="navLoginLink" href="${loginUrl}">Login</a></li>
+                            </c:otherwise>
+                        </c:choose>
                     </ul>
                 </div>
             </div>
