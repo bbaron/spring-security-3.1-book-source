@@ -35,7 +35,8 @@
 
         <session-management>
             <concurrency-control max-sessions="1"
-                expired-url="/login/form?expired"/>
+                expired-url="/login/form?expired"
+                error-if-maximum-exceeded="true"/>
         </session-management>
     </http>
     <authentication-manager>
