@@ -6,8 +6,9 @@
 <c:set var="pageTitle" value="Welcome to myCalendar!" scope="request"/>
 <jsp:include page="./includes/header.jsp"/>
 <p>Below you can find some highlights about myCalendar. Each sample will have a slightly different summary depending on what has been done.</p>
-<h2>Basic role based authorization</h2>
+<h2>Expression based authorization</h2>
 <ul>
+    <li>The functionality hasn't changed since the last checkpoint, but feel free to give it a try.</li>
     <li>Select a link that requires authentication and observe the new login page.</li>
     <li>Try typing an invalid username/password and viewing the error message</li>
     <li>Try logging in as an admin and viewing all events. Notice we are able to view all the events</li>
