@@ -52,4 +52,7 @@
     <bean id="authenticationUserDetailsService" class="org.springframework.security.core.userdetails.UserDetailsByNameServiceWrapper">
         <constructor-arg ref="userDetailsService" />
     </bean>
+
+    <!-- Handles a Single Logout Request from the CAS Server must be in custom-filter of security.xml -->
+    <bean id="singleLogoutFilter" class="org.jasig.cas.client.session.SingleSignOutFilter"/>
 </beans>
