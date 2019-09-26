@@ -22,6 +22,7 @@
         <intercept-url pattern="/**"
                 access="hasRole('ROLE_USER')"/>
         <access-denied-handler error-page="/errors/403"/>
+        <x509 user-service-ref="userDetailsService"/>
         <form-login login-page="/login/form"
                 login-processing-url="/login"
                 username-parameter="username"
