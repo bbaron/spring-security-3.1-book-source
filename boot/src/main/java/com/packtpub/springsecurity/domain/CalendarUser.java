@@ -14,30 +14,10 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  */
 public class CalendarUser implements Serializable {
     private Integer id;
-    private String openid;
     private String firstName;
     private String lastName;
     private String email;
     private String password;
-
-
-    /**
-     * Gets the openid for this user. For example:
-     * <ul>
-     * <li>A Google OpenID - https://www.google.com/accounts/o8/id?id=AItOawmSLDzbxDbJBea--1LuzT9ieWE4u02uWZg</li>
-     * <li>A Yahoo OpenID - https://me.yahoo.com/a/MMifyI8ZntF5DvkzM29BhUGVeNr0kEi4Nw--#5a086</li>
-     * <li>A Blogspot OpenID - http://springsecurity31.blogspot.com/</li>
-     * <li></li>
-     * </ul>
-     * @return
-     */
-    public String getOpenid() {
-        return openid;
-    }
-
-    public void setOpenid(String openid) {
-        this.openid = openid;
-    }
 
     /**
      * Gets the email address for this user. When authenticating against this data directly, this is also used as the

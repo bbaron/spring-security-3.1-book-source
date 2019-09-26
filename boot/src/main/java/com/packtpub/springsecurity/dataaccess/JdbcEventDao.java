@@ -126,8 +126,8 @@ public class JdbcEventDao implements EventDao {
     private static final RowMapper<CalendarUser> OWNER_ROW_MAPPER = new JdbcCalendarUserDao.CalendarUserRowMapper("owner_");
 
     private static final String EVENT_QUERY = "select e.id, e.summary, e.description, e.when, " +
-            "owner.id as owner_id, owner.openid as owner_openid, owner.email as owner_email, owner.password as owner_password, owner.first_name as owner_first_name, owner.last_name as owner_last_name, " +
-            "attendee.id as attendee_id, attendee.openid as attendee_openid, attendee.email as attendee_email, attendee.password as attendee_password, attendee.first_name as attendee_first_name, attendee.last_name as attendee_last_name " +
+            "owner.id as owner_id, owner.email as owner_email, owner.password as owner_password, owner.first_name as owner_first_name, owner.last_name as owner_last_name, " +
+            "attendee.id as attendee_id, attendee.email as attendee_email, attendee.password as attendee_password, attendee.first_name as attendee_first_name, attendee.last_name as attendee_last_name " +
             "from events as e, calendar_users as owner, calendar_users as attendee " +
             "where e.owner = owner.id and e.attendee = attendee.id";
 }

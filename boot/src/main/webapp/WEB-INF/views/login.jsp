@@ -7,7 +7,7 @@
 <jsp:include page="./includes/header.jsp"/>
 
 <c:url value="/login" var="loginUrl"/>
-<form action="${loginUrl}" method="post" id="openid_form">
+<form action="${loginUrl}" method="post">
     <c:if test="${param.error != null}">
         <div class="alert alert-error">
             Failed to login.
@@ -21,19 +21,12 @@
             You have been logged out.
         </div>
     </c:if>
-    <input type="hidden" name="action" value="verify" />
-    <div id="openid_choice">
-        <p>Please click your account provider:</p>
-        <div id="openid_btns"></div>
-    </div>
-    <div id="openid_input_area">
-        <input id="openid_identifier" name="openid_identifier" type="text" value="http://" />
-        <input id="openid_submit" type="submit" value="Sign-In"/>
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username"/>
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password"/>
+    <div class="form-actions">
+        <input id="submit" class="btn" name="submit" type="submit" value="Login"/>
     </div>
 </form>
-<script type="text/javascript">
-    $(document).ready(function() {
-        openid.init('openid_identifier');
-    });
-</script>
 <jsp:include page="./includes/footer.jsp"/>

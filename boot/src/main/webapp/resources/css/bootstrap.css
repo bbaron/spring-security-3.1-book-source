@@ -880,7 +880,7 @@ select:focus {
 .input-large {
   width: 210px;
 }
-.input-xlarge, input[name=openid_identifier] {
+.input-xlarge {
   width: 270px;
 }
 .input-xxlarge {

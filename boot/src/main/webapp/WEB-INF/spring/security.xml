@@ -11,8 +11,6 @@
                 access="permitAll"/>
         <intercept-url pattern="/login/*"
                 access="permitAll"/>
-        <intercept-url pattern="/signup/*"
-                access="permitAll"/>
         <intercept-url pattern="/logout"
                 access="permitAll"/>
         <intercept-url pattern="/errors/**"
@@ -24,43 +22,25 @@
         <intercept-url pattern="/**"
                 access="hasRole('ROLE_USER')"/>
         <access-denied-handler error-page="/errors/403"/>
-        <openid-login login-page="/login/check"
+        <form-login login-page="/login/form"
                 login-processing-url="/login"
+                username-parameter="username"
+                password-parameter="password"
                 authentication-failure-url="/login/form?error"
-                default-target-url="/default"
-                user-service-ref="registeringOpenIDAuthenticationUserDetailsService">
-            <attribute-exchange identifier-match=".*myopenid.com.*">
-                <openid-attribute name="email"
-                        type="http://schema.openid.net/contact/email"
-                        required="true"/>
-                <openid-attribute name="fullname"
-                        type="http://schema.openid.net/namePerson"
-                        required="true"/>
-            </attribute-exchange>
-            <attribute-exchange identifier-match="https://www.google.com/.*">
-                <openid-attribute name="email"
-                        type="http://axschema.org/contact/email"
-                        required="true" count="1"/>
-                <openid-attribute name="firstname"
-                        type="http://axschema.org/namePerson/first"
-                        required="true" />
-                <openid-attribute name="lastname"
-                        type="http://axschema.org/namePerson/last"
-                        required="true" />
-            </attribute-exchange>
-            <attribute-exchange identifier-match=".*yahoo.com.*">
-                <openid-attribute name="email"
-                        type="http://axschema.org/contact/email"
-                        required="true"/>
-                <openid-attribute name="fullname"
-                        type="http://axschema.org/namePerson"
-                        required="true" />
-            </attribute-exchange>
-        </openid-login>
+                default-target-url="/default"/>
         <logout logout-url="/logout"
                 logout-success-url="/login/form?logout"/>
     </http>
-    <authentication-manager>
-        <authentication-provider user-service-ref="calendarUserDetailsService"/>
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider>
+            <user-service id="userDetailsService">
+                <user name="user1@example.com"
+                        password="user1"
+                        authorities="ROLE_USER"/>
+                <user name="admin1@example.com"
+                        password="admin1"
+                        authorities="ROLE_USER,ROLE_ADMIN"/>
+            </user-service>
+        </authentication-provider>
     </authentication-manager>
 </bean:beans>

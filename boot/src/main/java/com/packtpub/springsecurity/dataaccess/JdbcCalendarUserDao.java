@@ -51,19 +51,6 @@ public class JdbcCalendarUserDao implements CalendarUserDao {
 
     @Override
     @Transactional(readOnly = true)
-    public CalendarUser findUserByOpenid(String openid) {
-        if (openid == null) {
-            throw new IllegalArgumentException("openid cannot be null");
-        }
-        try {
-            return jdbcOperations.queryForObject(CALENDAR_USER_QUERY + "openid = ?", CALENDAR_USER_MAPPER, openid);
-        } catch (EmptyResultDataAccessException e) {
-            return null;
-        }
-    }
-
-    @Override
-    @Transactional(readOnly = true)
     public CalendarUser findUserByEmail(String email) {
         if (email == null) {
             throw new IllegalArgumentException("email cannot be null");
@@ -99,13 +86,12 @@ public class JdbcCalendarUserDao implements CalendarUserDao {
         this.jdbcOperations.update(new PreparedStatementCreator() {
             public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
                 PreparedStatement ps = connection.prepareStatement(
-                        "insert into calendar_users (openid, email, password, first_name, last_name) values (?, ?, ?, ?, ?)",
+                        "insert into calendar_users (email, password, first_name, last_name) values (?, ?, ?, ?)",
                         new String[] { "id" });
-                ps.setString(1, userToAdd.getOpenid());
-                ps.setString(2, userToAdd.getEmail());
-                ps.setString(3, userToAdd.getPassword());
-                ps.setString(4, userToAdd.getFirstName());
-                ps.setString(5, userToAdd.getLastName());
+                ps.setString(1, userToAdd.getEmail());
+                ps.setString(2, userToAdd.getPassword());
+                ps.setString(3, userToAdd.getFirstName());
+                ps.setString(4, userToAdd.getLastName());
                 return ps;
             }
         }, keyHolder);
@@ -114,7 +100,7 @@ public class JdbcCalendarUserDao implements CalendarUserDao {
 
     // --- non-public static members ---
 
-    private static final String CALENDAR_USER_QUERY = "select id, openid, email, password, first_name, last_name from calendar_users where ";
+    private static final String CALENDAR_USER_QUERY = "select id, email, password, first_name, last_name from calendar_users where ";
 
     private static final RowMapper<CalendarUser> CALENDAR_USER_MAPPER = new CalendarUserRowMapper("calendar_users.");
 
@@ -140,7 +126,6 @@ public class JdbcCalendarUserDao implements CalendarUserDao {
         public CalendarUser mapRow(ResultSet rs, int rowNum) throws SQLException {
             CalendarUser user = new CalendarUser();
             user.setId(rs.getInt(columnLabelPrefix + "id"));
-            user.setOpenid(rs.getString(columnLabelPrefix + "openid"));
             user.setEmail(rs.getString(columnLabelPrefix + "email"));
             user.setPassword(rs.getString(columnLabelPrefix + "password"));
             user.setFirstName(rs.getString(columnLabelPrefix + "first_name"));

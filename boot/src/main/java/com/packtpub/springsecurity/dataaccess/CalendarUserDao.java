@@ -26,15 +26,6 @@ public interface CalendarUserDao {
     CalendarUser getUser(int id);
 
     /**
-     * Gets a {@link CalendarUser} for a specific {@link CalendarUser#getOpenid()}.
-     *
-     * @param openid
-     *            the {@link CalendarUser#getOpenid()} of the {@link CalendarUser} to find.
-     * @return a {@link CalendarUser} for the given OpenID or null if one could not be found.
-     */
-    CalendarUser findUserByOpenid(String openid);
-
-    /**
      * Finds a given {@link CalendarUser} by email address.
      *
      * @param email
