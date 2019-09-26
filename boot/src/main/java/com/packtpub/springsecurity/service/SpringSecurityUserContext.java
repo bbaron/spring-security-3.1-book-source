@@ -61,6 +61,12 @@ public class SpringSecurityUserContext implements UserContext {
 
     @Override
     public void setCurrentUser(CalendarUser user) {
-        throw new UnsupportedOperationException();
+        if (user == null) {
+            throw new IllegalArgumentException("user cannot be null");
+        }
+        UserDetails userDetails = userDetailsService.loadUserByUsername(user.getEmail());
+        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails,
+                user.getPassword(),userDetails.getAuthorities());
+        SecurityContextHolder.getContext().setAuthentication(authentication);
     }
 }

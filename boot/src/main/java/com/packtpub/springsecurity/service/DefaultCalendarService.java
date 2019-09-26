@@ -72,6 +72,9 @@ public class DefaultCalendarService implements CalendarService {
     }
 
     public int createUser(CalendarUser user) {
+        List<GrantedAuthority> authorities = AuthorityUtils.createAuthorityList("ROLE_USER");
+        UserDetails userDetails = new User(user.getEmail(), user.getPassword(), authorities);
+        userDetailsManager.createUser(userDetails);
         return userDao.createUser(user);
     }
 }

@@ -55,7 +55,11 @@ public class SignupController {
         user.setLastName(signupForm.getLastName());
         user.setPassword(signupForm.getPassword());
 
-        redirectAttributes.addFlashAttribute("message", "TODO we will implement signup later in the chapter");
+        int id = calendarService.createUser(user);
+        user.setId(id);
+        userContext.setCurrentUser(user);
+
+        redirectAttributes.addFlashAttribute("message", "You have successfully signed up and logged in.");
         return "redirect:/";
     }
 }
